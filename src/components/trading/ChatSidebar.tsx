@@ -71,7 +71,7 @@ export function ChatSidebar() {
   };
 
   return (
-    <aside className="flex w-full shrink-0 flex-col gap-2 lg:w-[310px]">
+    <aside className="flex w-full shrink-0 flex-col gap-2 lg:h-[660px] lg:w-[310px]">
       <button className="flex items-center gap-1.5 text-[12px] text-muted-foreground transition-colors hover:text-foreground">
         <HelpCircle className="h-3.5 w-3.5" />
         How to Trade
@@ -95,7 +95,7 @@ export function ChatSidebar() {
       </div>
 
       {/* Panel */}
-      <div className="flex min-h-[520px] flex-1 flex-col overflow-hidden rounded-md border border-border bg-panel">
+      <div className="flex h-[520px] flex-col overflow-hidden rounded-md border border-border bg-panel lg:h-auto lg:min-h-0 lg:flex-1">
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <MessageSquare className="h-3.5 w-3.5 text-green" />
           <span className="text-[12px] font-semibold text-foreground">Public Chat</span>

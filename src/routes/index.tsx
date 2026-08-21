@@ -32,7 +32,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-terminal-bg">
       <Header balance={balance} />
-      <main className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 py-4 lg:flex-row">
+      <main className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 py-4 lg:flex-row lg:items-start">
         <ChatSidebar />
         <TradingPanel
           onTrade={(_side, amount) => setBalance((b) => Math.max(0, b - amount))}
