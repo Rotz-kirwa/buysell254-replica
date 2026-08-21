@@ -43,12 +43,14 @@ const TABS = ["CHAT", "HISTORY", "FEED"] as const;
 
 export function ChatSidebar() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("CHAT");
-  const [messages, setMessages] = useState<Msg[]>(SEED);
+  const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState("");
   const feedRef = useRef<HTMLDivElement>(null);
-  const nextId = useRef(SEED.length);
+  const nextId = useRef(0);
 
   useEffect(() => {
+    nextId.current = SEED.length;
+    setMessages(SEED);
     const t = setInterval(() => {
       setMessages((m) => [...m.slice(-60), randomEvent(nextId.current++)]);
     }, 4200);

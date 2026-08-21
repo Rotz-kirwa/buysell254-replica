@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Header } from "@/components/trading/Header";
 import { ChatSidebar } from "@/components/trading/ChatSidebar";
 import { TradingPanel } from "@/components/trading/TradingPanel";
+import { Footer } from "@/components/trading/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,14 +31,15 @@ function Index() {
   const [balance, setBalance] = useState(1250);
 
   return (
-    <div className="min-h-screen bg-terminal-bg">
+    <div className="flex min-h-screen flex-col bg-terminal-bg">
       <Header balance={balance} />
-      <main className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 py-4 lg:flex-row lg:items-start">
+      <main className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col gap-4 px-4 py-4 lg:flex-row lg:items-start">
         <ChatSidebar />
         <TradingPanel
           onTrade={(_side, amount) => setBalance((b) => Math.max(0, b - amount))}
         />
       </main>
+      <Footer />
     </div>
   );
 }
