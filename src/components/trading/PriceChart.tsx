@@ -20,12 +20,12 @@ function seedSeries(): number[] {
 
 export function PriceChart({ rate }: { rate: number }) {
   const [series, setSeries] = useState<number[]>(() => seedSeries());
-  const last = useRef(series[series.length - 1]);
+  const last = useRef(series[series.length - 1] ?? 0);
 
   useEffect(() => {
     const t = setInterval(() => {
       setSeries((s) => {
-        let v = last.current;
+        let v = last.current ?? 0;
         const roll = Math.random();
         if (roll > 0.955) v += 30 + Math.random() * 24;
         else if (roll > 0.915) v -= 26 + Math.random() * 24;
@@ -63,7 +63,7 @@ export function PriceChart({ rate }: { rate: number }) {
       negPath: clampArea(false),
       zeroY: z,
       ticks: [60, 30, 0, -30, -60].map((v) => ({ v, y: y(v) })),
-      lastPoint: pts[pts.length - 1],
+      lastPoint: pts[pts.length - 1] ?? ([0, H / 2] as const),
     };
   }, [series]);
 
